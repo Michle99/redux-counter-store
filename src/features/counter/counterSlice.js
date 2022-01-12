@@ -1,12 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 // step 5 - create a Redux State Slice
 //Redux Toolkit's createSlice and createReducer APIs use 
 //Immer inside to allow us to write "mutating" update logic that becomes correct immutable updates.
+
+// Define a type for the slice state
+// interface CounterState {
+//     value: number
+// }
+
+// // Define the initial state using that type
+// const initialState: CounterState = {
+//     value: 0
+// }
+
 export const counterSlice = createSlice({
     name: 'counter',
     initialState: {
         value: 0
     },
+
     reducers: {
         increment: state => {
              // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -19,6 +32,7 @@ export const counterSlice = createSlice({
         decrement: state => {
             state.value -= 1;
         },
+        // Use the PayloadAction type to declare the contents of `action.payload`
         incrementByAmount: (state, action) => {
             state.value += action.payload;
         }
@@ -40,6 +54,6 @@ export const incrementAsync = ammount => dispatch => {
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
-export const selectCount = state => state.counter.value;
+export const selectCount = (state) => state.counter.value;
 
 export default counterSlice.reducer;
